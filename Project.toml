@@ -1,0 +1,13 @@
+name = "GenieAuthorisation"
+uuid = "af3f74f6-a62a-4aa2-b188-7ea1105ee18f"
+authors = ["Adrian Salceanu <essenciary@users.noreply.github.com> and contributors"]
+version = "0.1.0"
+
+[compat]
+julia = "1"
+
+[extras]
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+
+[targets]
+test = ["Test"]
