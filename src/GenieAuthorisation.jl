@@ -30,20 +30,8 @@ end
 Permission(name::Union{String,Symbol}) = Permission(name = string(name))
 
 
-function isusertype(model::M)::Bool where {M<:AbstractModel}
-  split(string(typeof(model)), '.')[end] == "User"
-end
-
-
-function assert_user_type(model::M)::Bool where {M<:AbstractModel}
-  isusertype(model) || throw(UnexpectedTypeException("User", string(typeof(model))))
-
-  true
-end
-
-
 function assign_role(user::U, role::Role)::Bool where {U<:AbstractModel}
-  assert_user_type(user) && Relationship!(user, role)
+  Relationship!(user, role)
 
   true
 end
@@ -57,22 +45,33 @@ end
 
 
 function has_role(user::U, role::Role)::Bool where {U<:AbstractModel}
-  assert_user_type(user) && isrelated(user, role)
+  isrelated(user, role)
 end
 
 
-function has_permission(role::Role, permission::Permission)::Bool
+function fetch_permission(permission::Union{Permission,String,Symbol}) :: Union{Permission,Nothing}
+  isa(permission, Permission) || (permission = findone(Permission, name = string(permission)))
+
+  permission
+end
+
+
+function has_permission(role::Role, permission::Union{Permission,String,Symbol})::Bool
+  permission = fetch_permission(permission)
+  permission === nothing && return false
   isrelated(role, permission)
 end
 
 
-function has_permission(user::U, permission::Permission)::Bool where {U<:AbstractModel}
-  assert_user_type(user) && isrelated(user, permission, through = [Role])
+function has_permission(user::U, permission::Union{Permission,String,Symbol})::Bool where {U<:AbstractModel}
+  permission = fetch_permission(permission)
+  permission === nothing && return false
+  isrelated(user, permission, through = [Role])
 end
 
 
-macro authorised!(user, permission::Permission, exception = Genie.Exceptions.NotFoundException())
-  :(has_permission($user, $permission) || throw($exception))
+macro authorised!(permission, exception = Genie.Exceptions.NotFoundException("Page"))
+  :(has_permission($(esc( :( Main.UserApp.current_user() ) )), $(esc(permission))) || throw($exception))
 end
 
 
