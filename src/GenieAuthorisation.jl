@@ -70,6 +70,11 @@ function has_permission(user::U, permission::Union{Permission,String,Symbol})::B
 end
 
 
+function has_permission(u::Nothing, permission)::Bool
+  false
+end
+
+
 macro authorised!(permission, exception = Genie.Exceptions.NotFoundException("Page"))
   :(has_permission($(esc( :( Main.UserApp.current_user() ) )), $(esc(permission))) || throw($exception))
 end
