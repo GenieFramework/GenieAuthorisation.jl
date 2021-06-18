@@ -11,7 +11,7 @@ SearchLight = "340e8cb6-72eb-11e8-37ce-c97ebeb32050"
 [compat]
 Genie = "1"
 GenieAuthentication = "0.7, 1"
-SearchLight = "1"
+SearchLight = "1, 0.22"
 julia = "1"
 
 [extras]
