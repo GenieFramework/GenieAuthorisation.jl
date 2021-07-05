@@ -37,7 +37,7 @@ function assign_role(user::U, role::Role)::Bool where {U<:AbstractModel}
 end
 
 
-function assign_permission(role::Role, permission::Permission)::Bool
+function assign_permission(role::Role, permission::Permission) :: Bool
   Relationship!(role, permission)
 
   true
