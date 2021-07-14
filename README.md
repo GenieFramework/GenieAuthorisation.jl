@@ -150,7 +150,7 @@ authorisation within the app.
 
 #### `@authorised!(<permission>)`
 
-The `@authrised!` macro checks that the current user has the `<permission>` permission - if not, an exception is automatically
+The `@authorised!` macro checks that the current user has the `<permission>` permission - if not, an exception is automatically
 thrown, stopping the current thread of execution:
 
 ```julia

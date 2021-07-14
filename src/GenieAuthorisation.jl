@@ -49,6 +49,11 @@ function has_role(user::U, role::Role)::Bool where {U<:AbstractModel}
 end
 
 
+function has_role(user::U, role::Union{String,Symbol})::Bool where {U<:AbstractModel}
+  has_role(user, findone(Role, name = string(role)))
+end
+
+
 function fetch_permission(permission::Union{Permission,String,Symbol}) :: Union{Permission,Nothing}
   isa(permission, Permission) || (permission = findone(Permission, name = string(permission)))
 
