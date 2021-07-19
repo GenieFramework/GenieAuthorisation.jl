@@ -1,8 +1,9 @@
 module GenieAuthorisation
 
+using Reexport
 using Genie
 using SearchLight, SearchLight.Relationships
-using GenieAuthentication
+@reexport using GenieAuthentication
 
 export Role, Permission
 export assign_role, assign_permission
@@ -83,7 +84,6 @@ end
 macro authorised!(permission, exception = Genie.Exceptions.NotFoundException("Page"))
   :(has_permission($(esc( :( Main.UserApp.current_user() ) )), $(esc(permission))) || throw($exception))
 end
-
 
 
 """
