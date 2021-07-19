@@ -92,6 +92,9 @@ end
 Copies the plugin's files into the host Genie application.
 """
 function install(dest::String; force = false, debug = false) :: Nothing
+  # automatically install the GenieAuthentication plugin -- however, do not force the install
+  GenieAuthentication.install(dest; force = false, debug = debug)
+
   src = abspath(normpath(joinpath(pathof(@__MODULE__) |> dirname, "..", Genie.Plugins.FILES_FOLDER)))
 
   debug && @info "Preparing to install from $src into $dest"
