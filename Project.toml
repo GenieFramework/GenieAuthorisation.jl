@@ -13,7 +13,7 @@ SearchLight = "340e8cb6-72eb-11e8-37ce-c97ebeb32050"
 Genie = "1, 2, 3"
 GenieAuthentication = "0.7, 1"
 Reexport = "1"
-SearchLight = "1"
+SearchLight = "1, 2"
 julia = "1"
 
 [extras]
