@@ -3,6 +3,7 @@ module GenieAuthorisation
 using Reexport
 using Genie
 using SearchLight, SearchLight.Relationships
+import GeniePlugins
 @reexport using GenieAuthentication
 
 export Role, Permission
@@ -108,7 +109,7 @@ function install(dest::String; force = false, debug = false) :: Nothing
 
     debug && "Installing from $(joinpath(src, f))"
 
-    Genie.Plugins.install(joinpath(src, f), dest, force = force)
+    GeniePlugins.install(joinpath(src, f), dest, force = force)
   end
 
   nothing
