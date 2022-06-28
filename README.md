@@ -13,7 +13,7 @@ its files.
 `GenieAuthorisation.jl` works in tandem with `GenieAuthentication.jl`, the authentication plugin for `Genie.jl` apps.
 In fact, `GenieAuthorisation.jl` adds an authorisation layer on top of the authentication features provided by `GenieAuthentication.jl`.
 As such, first, please make sure that `GenieAuthentication.jl` is configured for your `Genie.jl` application, following the
-instructions at: <https://github.com/GenieFramework/GenieAuthentication.jl>.jl
+instructions at: <https://github.com/GenieFramework/GenieAuthentication.jl>
 
 With the `GenieAuthentication.jl` plugin installed, make sure you configure authenticated access to the areas you want to
 further protect with role based authorisation. So the first step is to add user authentication to the app. Then refine access via
