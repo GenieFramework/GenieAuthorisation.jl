@@ -3,6 +3,7 @@ module GenieAuthorisation
 using Reexport
 using Genie
 using SearchLight, SearchLight.Relationships
+import GeniePlugins
 @reexport using GenieAuthentication
 
 export Role, Permission
@@ -95,7 +96,7 @@ function install(dest::String; force = false, debug = false) :: Nothing
   # automatically install the GenieAuthentication plugin -- however, do not force the install
   GenieAuthentication.install(dest; force = false, debug = debug)
 
-  src = abspath(normpath(joinpath(pathof(@__MODULE__) |> dirname, "..", Genie.Plugins.FILES_FOLDER)))
+  src = abspath(normpath(joinpath(pathof(@__MODULE__) |> dirname, "..", GeniePlugins.FILES_FOLDER)))
 
   debug && @info "Preparing to install from $src into $dest"
   debug && @info "Found these to install $(readdir(src))"
@@ -108,7 +109,7 @@ function install(dest::String; force = false, debug = false) :: Nothing
 
     debug && "Installing from $(joinpath(src, f))"
 
-    Genie.Plugins.install(joinpath(src, f), dest, force = force)
+    GeniePlugins.install(joinpath(src, f), dest, force = force)
   end
 
   nothing

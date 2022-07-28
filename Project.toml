@@ -1,17 +1,19 @@
 name = "GenieAuthorisation"
 uuid = "af3f74f6-a62a-4aa2-b188-7ea1105ee18f"
 authors = ["Adrian Salceanu <e@essenciary.com> and contributors"]
-version = "1.4"
+version = "2.0.0"
 
 [deps]
 Genie = "c43c736e-a2d1-11e8-161f-af95117fbd1e"
 GenieAuthentication = "e115e502-7e3a-11e9-29b2-aba8be6c6778"
+GeniePlugins = "07906039-e6ad-44b0-b988-2f2de6a70eec"
 Reexport = "189a3867-3050-52da-a836-e630ba90ab69"
 SearchLight = "340e8cb6-72eb-11e8-37ce-c97ebeb32050"
 
 [compat]
-Genie = "3, 4, 5"
-GenieAuthentication = "1, 2"
+Genie = "5"
+GenieAuthentication = "2"
+GeniePlugins = "1"
 Reexport = "1"
 SearchLight = "1, 2"
 julia = "1.6"
