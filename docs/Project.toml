@@ -1,0 +1,4 @@
+[deps]
+Documenter = "e30172f5-a6a5-5a46-863b-614d45cd2de4"
+GenieAuthorisation = "af3f74f6-a62a-4aa2-b188-7ea1105ee18f"
+GenieSession = "03cc5b98-4f21-4eb6-99f2-22eced81f962"
