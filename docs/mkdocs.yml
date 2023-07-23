@@ -1,0 +1,20 @@
+site_name:        GenieAuthorisation.jl
+repo_url:         https://github.com/GenieFramework/GenieAuthorisation.jl
+site_description: User Authorisation for Genie.jl
+site_author:      Adrian Salceanu
+
+theme: readthedocs
+
+extra_css:
+  - assets/Documenter.css
+
+markdown_extensions:
+  - extra
+  - tables
+  - fenced_code
+  - mdx_math
+
+docs_dir: 'build'
+
+pages:
+  - Home: index.md
